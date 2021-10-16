@@ -1,0 +1,146 @@
+.calendar-container {
+  padding: 14px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1600px;
+
+  .header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+
+    h2 {
+      text-align: end;
+      width: 250px;
+    }
+  }
+
+  .card {
+    border: 2px solid rgba(0, 0, 0, 0.125);
+  }
+
+  ::ng-deep {
+
+    .list-item {
+      width: 14.28% !important;
+      border-bottom: 2px solid rgba(0, 0, 0, 0.125);
+
+      .mat-list-item-content {
+        justify-content: center;
+
+        .day {
+          font-size: 18px;
+          font-weight: bold;
+        }
+      }
+
+
+      &:not(:last-of-type) {
+        border-right: 2px solid rgba(0, 0, 0, 0.125);
+      }
+    }
+
+    .list-option {
+      width: 14.28% !important;
+      border-bottom: 2px solid rgba(0, 0, 0, 0.125);
+      height: 11vh;
+      max-height: 150px !important;
+      overflow-y: auto;
+
+      .mat-list-item-content {
+        display: contents;
+
+        .mat-list-text {
+          padding: 5px !important;
+
+          .day {
+            text-align: end;
+            color: rgb(27, 27, 27);
+            font-weight: bold;
+          }
+
+          .event {
+            font-size: 12px;
+            color: #fff;
+            background-color: rgb(85, 136, 202);
+            border-radius: 4px;
+            margin-bottom: 4px;
+            padding: 0 5px;
+            box-shadow: rgba(0, 0, 0, 10%) 0px 4px 5px;
+
+            &:hover {
+              background-color: rgba(85, 136, 202, 0.842);
+            }
+          }
+
+        }
+      }
+
+      &:not(:last-of-type) {
+        border-right: 2px solid rgba(0, 0, 0, 0.125);
+      }
+
+      &:nth-child(7) {
+        border-right: none;
+      }
+
+      &:nth-child(14) {
+        border-right: none;
+      }
+
+      &:nth-child(21) {
+        border-right: none;
+      }
+
+      &:nth-child(28) {
+        border-right: none;
+      }
+
+      &:nth-child(35) {
+        border-right: none;
+      }
+    }
+
+    .mat-list-base {
+      padding-top: 0 !important;
+    }
+  }
+}
+
+::ng-deep {
+  .mat-list-item-disabled {
+    background-color: #fff !important;
+  }
+
+  .mat-fab {
+    background-color: rgb(243, 243, 243) !important;
+    color: rgb(68, 68, 68) !important;
+    width: 48px !important;
+    height: 48px !important;
+  }
+
+  .mat-icon {
+    font-size: 18px;
+    font-weight: bold;
+    width: 15px !important;
+  }
+}
+
+.grey {
+  color: #ccc !important;
+}
+
+::-webkit-scrollbar {
+  width: 3px !important;
+}
+
+@media (max-width: 528px) {
+  ::ng-deep .mat-form-field-infix {
+    width: 100px !important;
+  }
+
+  .calendar-container>.header {
+    flex-wrap: wrap;
+  }
+}

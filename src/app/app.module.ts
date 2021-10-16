@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
     AppRoutingModule,
     NgbModule,
     NgxSpinnerModule,
+    HttpClientModule,
     LoadingBarRouterModule,
     LoadingBarHttpClientModule,
     BrowserAnimationsModule

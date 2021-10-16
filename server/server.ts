@@ -1,7 +1,12 @@
 import * as express from 'express';
+import * as cors from 'cors';
 import { getJsonFile } from './get-json-file';
 
 const app = express();
+
+app.use(cors({
+    origin: 'http://localhost:4200'
+}));
 
 app.route('/').get(getJsonFile);
 

@@ -1,0 +1,63 @@
+<div class="calendar-container">
+  <div class="header">
+    <h2 class="mr-4 d-none d-md-block">
+      <strong>{{ date | date: "yyyy MMMM" }}</strong>
+    </h2>
+    <mat-form-field class="mr-3">
+      <mat-label>Current month</mat-label>
+      <mat-select [(value)]="currentMonth">
+        <mat-option *ngFor="let month of months" [value]="month.value">{{
+          month.displayName
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="mr-4">
+      <mat-label>Current year</mat-label>
+      <mat-select [(value)]="currentYear">
+        <mat-option *ngFor="let year of years" [value]="year">{{
+          year
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div class="d-flex justify-content-center">
+      <button [disabled]="currentYear <= minYear && currentMonth == 0" class="mr-2" mat-fab (click)="setMonth(-1)">
+        <mat-icon>arrow_back_ios</mat-icon>
+      </button>
+      <button [disabled]="currentYear >= maxYear && currentMonth == 11" mat-fab (click)="setMonth(+1)">
+        <mat-icon>arrow_forward_ios</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="card shadow">
+    <mat-list #shoes class="d-flex">
+      <mat-list-item class="list-item" *ngFor="let day of week">
+        <span class="day">{{ day }}</span>
+      </mat-list-item>
+    </mat-list>
+
+    <mat-selection-list #shoes [multiple]="false" class="d-flex flex-wrap">
+      <mat-list-option
+        [disabled]="day.events?.length ? false : true"
+        (click)="openDialog(day)"
+        class="list-option"
+        *ngFor="let day of dates"
+        [value]="dates"
+      >
+        <span class="day" [ngClass]="{ grey: !isSameMonth(day.date) }">{{
+          day.date | date: "d"
+        }}</span>
+        <ng-container *ngIf="day.events">
+          <p
+            [matTooltip]="getShortTitle(event)"
+            matTooltipClass="tooltip-class"
+            class="event"
+            *ngFor="let event of day.events"
+          >
+            {{ event.team1 + ' x ' + event.team2 }}
+          </p>
+        </ng-container>
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+</div>

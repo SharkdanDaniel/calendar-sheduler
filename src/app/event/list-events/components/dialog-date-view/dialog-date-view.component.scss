@@ -1,0 +1,27 @@
+.wrapper {
+  padding: 16px;
+  .date {
+    font-size: 12px;
+  }
+  .content {
+    margin: 1px;
+    height: 90vh;
+    min-width: 60vw;
+    max-width: 1000px;
+
+    span {
+      font-size: 14px;
+    }
+
+    .score {
+      font-size: 38px;
+      font-weight: bold;
+    }
+  }
+}
+
+@media (max-width: 385px) {
+  ::ng-deep .mat-dialog-container {
+    padding: 0 !important;
+  }
+}

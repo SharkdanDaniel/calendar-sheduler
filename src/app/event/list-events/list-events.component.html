@@ -1,1 +1,12 @@
-<p>list-events works!</p>
+<mat-toolbar color="primary" class="mb-4">
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+  >
+    <mat-icon style="font-size: 28px;">schedule</mat-icon>
+  </button>
+  <span class="ml-2">Scheduler</span>
+</mat-toolbar>
+
+<app-schedule-calendar [events]="events" [initialDate]="initialDate"></app-schedule-calendar>
