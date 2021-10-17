@@ -4,9 +4,9 @@
       <strong>{{ date | date: "yyyy MMMM" }}</strong>
     </h2>
     
-    <!-- set current month -->
+    <!-- set month -->
     <mat-form-field class="mr-3">
-      <mat-label (click)="dpMonth.open()">Set current month</mat-label>
+      <mat-label (click)="dpMonth.open()">Set month</mat-label>
       <input
         readonly
         matInput
@@ -23,9 +23,9 @@
       </mat-datepicker>
     </mat-form-field>
 
-    <!-- set current year -->
+    <!-- set year -->
     <mat-form-field class="mr-4">
-      <mat-label (click)="dpYear.open()">Set current year</mat-label>
+      <mat-label (click)="dpYear.open()">Set year</mat-label>
       <input
         readonly
         matInput
