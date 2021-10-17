@@ -1,28 +1,13 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { parseISO } from 'date-fns';
-import { noop, Subscription } from 'rxjs';
+import { noop } from 'rxjs';
 import { DateEvent, Match } from '../../models/event.model';
 import { DialogDateViewComponent } from '../dialog-date-view/dialog-date-view.component';
+import { Moment } from 'moment';
+import { MatDatepicker } from '@angular/material/datepicker';
 
 const DAY_MS = 60 * 60 * 24 * 1000;
-
-const YEARS = [2019, 2020];
-
-const MONTHS = [
-  { value: 0, displayName: 'January' },
-  { value: 1, displayName: 'February' },
-  { value: 2, displayName: 'March' },
-  { value: 3, displayName: 'April' },
-  { value: 4, displayName: 'May' },
-  { value: 5, displayName: 'June' },
-  { value: 6, displayName: 'July' },
-  { value: 7, displayName: 'August' },
-  { value: 8, displayName: 'September' },
-  { value: 9, displayName: 'October' },
-  { value: 10, displayName: 'November' },
-  { value: 11, displayName: 'December' },
-];
 
 @Component({
   selector: 'app-schedule-calendar',
@@ -33,17 +18,14 @@ export class ScheduleCalendarComponent implements OnInit {
   private _events: Match[] = [];
   public dates: DateEvent[] = [];
   public week = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-  public months = MONTHS;
-  public years = YEARS;
 
-  @Input() maxYear = 2020;
-  @Input() minYear = 2019;
+  @Input() minDate!: Date;
+  @Input() maxDate!: Date;
   @Input('initialDate') date = new Date();
   @Input() set events(value: Match[]) {
     this.dates = this.getCalendarDays(this.date, value);
     this._events = value;
   }
-  @Output() selected = new EventEmitter();
 
   get events() {
     return this._events;
@@ -98,8 +80,20 @@ export class ScheduleCalendarComponent implements OnInit {
       } ${event.team2.slice(0, 3).toUpperCase()}`;
   }
 
-  /* Private Methods */
+  chosenMonthHandler(
+    normalizedMonth: Moment,
+    datepicker: MatDatepicker<Moment>
+  ) {
+    this.currentMonth = normalizedMonth.month();
+    datepicker.close();
+  }
 
+  chosenYearHandler(normalizedYear: Moment, datepicker: MatDatepicker<Moment>) {
+    this.currentYear = normalizedYear.year();
+    datepicker.close();
+  }
+
+  /* PRIVATE METHODS */
   private getCalendarDays(date = new Date(), events?: Match[]) {
     const calendarStartTime = this.getCalendarStartDay(date)?.getTime();
 

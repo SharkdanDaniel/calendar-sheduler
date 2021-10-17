@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { EventRoutingModule } from './event-routing.module';
-import { ListEventsComponent } from './list-events/list-events.component';
-
 /* Material */
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -13,10 +10,16 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatListModule } from '@angular/material/list';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSelectModule } from '@angular/material/select';
-import { FormsModule } from '@angular/forms';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { MatInputModule } from '@angular/material/input';
+
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EventRoutingModule } from './event-routing.module';
+import { ListEventsComponent } from './list-events/list-events.component';
 import { ScheduleCalendarComponent } from './list-events/components/schedule-calendar/schedule-calendar.component';
 import { DialogDateViewComponent } from './list-events/components/dialog-date-view/dialog-date-view.component';
-
 
 const material = [
   MatDialogModule,
@@ -27,7 +30,10 @@ const material = [
   MatToolbarModule,
   MatTooltipModule,
   MatListModule,
-  MatIconModule
+  MatIconModule,
+  MatDatepickerModule,
+  MatMomentDateModule,
+  MatInputModule
 ]
 
 @NgModule({
@@ -40,6 +46,7 @@ const material = [
     CommonModule,
     EventRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     [...material]
   ]
 })

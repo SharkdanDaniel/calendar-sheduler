@@ -109,6 +109,10 @@
 }
 
 ::ng-deep {
+  .mat-calendar-header {
+    display: none !important;
+  }
+
   .mat-list-item-disabled {
     background-color: #fff !important;
   }
