@@ -16,6 +16,7 @@ const DAY_MS = 60 * 60 * 24 * 1000;
 })
 export class ScheduleCalendarComponent implements OnInit {
   private _events: Match[] = [];
+  
   public dates: DateEvent[] = [];
   public week = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 

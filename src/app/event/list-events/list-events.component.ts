@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { EventService } from './../../event.service';
+import { EventService } from '../event.service';
 import { Subscription } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 import { Match } from './models/event.model';

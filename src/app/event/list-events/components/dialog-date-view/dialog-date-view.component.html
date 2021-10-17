@@ -8,13 +8,13 @@
     <mat-list class="">
       <mat-list-item *ngFor="let event of data.events" class="list-item p-md-3">
         <div class="d-flex col-md-12">
-          <span class="d-block d-md-none">{{ event.team1.slice(0, 3) | uppercase }}   </span>
-          <span class="col-md-4 d-none d-md-block">{{ event.team1 | uppercase }}   </span>
-          <span class="score col-md-1">{{ event.score.ft[0] }} </span>
-          <span class="col-md-1">   x   </span>
-          <span class="score col-md-1">{{ event.score.ft[1] }} </span>
+          <span class="d-block d-md-none">{{ event.team1.slice(0, 3) | uppercase }}</span>
+          <span class="col-md-4 d-none d-md-block text-right">{{ event.team1 | uppercase }}</span>
+          <span class="score col-md-1 text-center">{{ event.score.ft[0] }}</span>
+          <span class="col-md-1 text-center">x</span>
+          <span class="score col-md-1 text-center">{{ event.score.ft[1] }}</span>
           <span class="d-block d-md-none">{{ event.team2.slice(0, 3) | uppercase }}</span>
-          <span class="col-md-5 d-none d-md-block">{{ event.team2 | uppercase }}</span>
+          <span class="col-md-4 d-none d-md-block">{{ event.team2 | uppercase }}</span>
         </div>
         <mat-divider></mat-divider>
       </mat-list-item>
