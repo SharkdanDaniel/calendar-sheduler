@@ -9,4 +9,4 @@
   <span class="ml-2">Scheduler</span>
 </mat-toolbar>
 
-<app-schedule-calendar [events]="events" [initialDate]="initialDate"></app-schedule-calendar>
+<app-schedule-calendar [events]="(events$ | async)!" [initialDate]="initialDate"></app-schedule-calendar>

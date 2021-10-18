@@ -1,7 +1,7 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { EventService } from '../event.service';
-import { Subscription } from 'rxjs';
-import { finalize } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { finalize, map } from 'rxjs/operators';
 import { Match } from './models/event.model';
 import { NgxSpinnerService } from 'ngx-spinner';
 
@@ -10,10 +10,8 @@ import { NgxSpinnerService } from 'ngx-spinner';
   templateUrl: './list-events.component.html',
   styleUrls: ['./list-events.component.scss']
 })
-export class ListEventsComponent implements OnInit, OnDestroy {
-  private subscription = new Subscription();
-  
-  public events: Match[] = [];
+export class ListEventsComponent implements OnInit {  
+  public events$: Observable<Match[]> = of([])
   public initialDate = new Date('2019-8-9');
 
   constructor(private eventService: EventService, private loading: NgxSpinnerService) { }
@@ -24,15 +22,10 @@ export class ListEventsComponent implements OnInit, OnDestroy {
   
   getEvents() {
     this.loading.show();
-    this.subscription = this.eventService
+    this.events$ = this.eventService
     .getEvents()
-    .pipe(finalize(() => this.loading.hide()))
-    .subscribe(({ matches }: any) => {
-      this.events = matches;
-    });
-  }
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    .pipe(
+      map((res: any) => res.matches as Match[] ),
+      finalize(() => this.loading.hide()))
   }
 }
