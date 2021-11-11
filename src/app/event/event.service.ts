@@ -10,6 +10,9 @@ export class EventService {
   constructor(private http: HttpClient) { }
 
   getEvents() {
-    return this.http.get(environment.baseURL);
+    return this.http.get('assets/events.json');
   }
+  // getEvents() {
+  //   return this.http.get(environment.baseURL);
+  // }
 }
